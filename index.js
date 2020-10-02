@@ -28,6 +28,17 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 
+if (process.env.NODE_ENV === "production") {
+  //Express will serve up production assets like main.js or main.class ClassName
+  app.use(express.static("client/build"));
+
+  //Express will serve up the index html if it doesn't recognize the routes
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resovle(_dirname, "client", "build", "index.html"));
+  });
+}
+
 //if there is an environment variable defined by HEROKU, assign this variable
 //to port, otherwise use default port 5000 (for development environment)
 //Use all capital letters for PORT because this value seldom changes.
