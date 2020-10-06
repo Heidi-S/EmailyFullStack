@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Header from "./Header";
 import Landing from "./Landing";
-
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
 
 class App extends Component {
   componentDidMount() {
@@ -14,13 +13,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div>
         {
           //BrowerRouter can have at most one child, which means complicated info
           //should be put in one <div></div>
         }
         <BrowserRouter>
-          <div>
+          <div className="container">
             {
               //Route go through the listed paths and if currentpath contain listed
               //path, it will show the component. it's possible that multiple listed

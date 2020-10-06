@@ -8,6 +8,10 @@ import reduxThunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers";
 
+//development only
+import axios from "axios";
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
@@ -17,5 +21,5 @@ ReactDOM.render(
   document.querySelector("#root")
 );
 
-console.log(process.env.REACT_APP_STRIPE_KEY);
-console.log(process.env.NODE_ENV);
+//console.log(process.env.REACT_APP_STRIPE_KEY);
+//console.log(process.env.NODE_ENV);
